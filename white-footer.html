@@ -1,35 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Inline CSS Footer (White Background)</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
+<html><head></head><body><table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 890px; margin: auto; background-color: #ffffff; background-image: url('https://kingsleytran.github.io/adv-footers/white.png'); background-size: cover; background-repeat: no-repeat; color: #000000; font-family: Arial, sans-serif; padding-top: 50px;">
+    <tbody><tr>
+        <td style="padding: 20px;">
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+                <tbody><tr>
+                    <td valign="top" style="padding-right: 20px;">
+                        <a target="_blank" href="https://advaccountants.com.au/" style="display: block;">
+                            <img src="https://kingsleytran.github.io/adv-footers/logo.png" alt="ADV Partners Logo" width="454" height="80" style="display: block; border: 0; margin-bottom: 20px;">
+                        </a>
+                    </td>
 
-<div style="background-color: #ffffff; background-image: url('https://kingsleytran.github.io/adv-footers/white.png'); color: #ffffff; padding: 20px 0; text-align: center; background-size: cover; background-repeat: no-repeat; padding-top: min(5%, 50px); max-width: 890px; margin: auto;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <a target="_blank" href="https://advaccountants.com.au/" style="display: flex; align-items: center; margin-bottom: 20px; text-decoration: none;">
-            <img src="https://kingsleytran.github.io/adv-footers/logo.png" alt="ADV Partners Logo" style="height: 80px; margin-right: 15px;">
-        </a>
+                    <td valign="top" style="color: black; text-align: left; line-height: 1.5; font-size: 16px; width: 300px; padding-right: 20px;">
+                        5-7 Sun Crescent, Sunshine,<br>
+                        VIC, Australia, Victoria
+                        <div style="margin-top: 10px;">
+                            <a target="_blank" href="https://www.facebook.com/ADVaccountants" style="display: inline-block; margin-right: 15px; vertical-align: middle;">
+                                <img src="https://kingsleytran.github.io/adv-footers/fb-white.png" alt="Facebook" width="40" height="40" style="display: block; border: 0;">
+                            </a>
+                            <a href="mailto:admin@advaccountants.com.au" style="display: inline-block; vertical-align: middle;">
+                                <img src="https://kingsleytran.github.io/adv-footers/mail-white.png" alt="Email" width="40" height="40" style="display: block; border: 0;">
+                            </a>
+                        </div>
+                    </td>
 
-        <div style="color: black; text-align: left; margin-bottom: 20px; line-height: 1.5; font-size: 16px; flex-grow: 1; max-width: 300px;">
-            5-7 Sun Crescent, Sunshine,<br>
-            VIC, Australia, Victoria
-            <div style="margin-top: 10px; display: flex; gap: 15px; justify-content: flex-start;">
-                <a target="_blank" href="https://www.facebook.com/ADVaccountants" style="display: inline-block; color: #212121; border-radius: 50%; width: 40px; height: 40px; line-height: 40px; font-size: 20px; text-decoration: none; text-align: center;">
-                    <img width="40px" src="https://kingsleytran.github.io/adv-footers/fb-white.png" style="width: 40px; height: auto; display: block;">
-                </a>
-                <a href="mailto:admin@advaccountants.com.au" style="display: inline-block; color: #212121; border-radius: 50%; width: 40px; height: 40px; line-height: 40px; font-size: 20px; text-decoration: none; text-align: center;">
-                    <img width="40px" src="https://kingsleytran.github.io/adv-footers/mail-white.png" style="width: 40px; height: auto; display: block;">
-                </a>
-            </div>
-        </div>
-        <div style="border-left: 1px solid #444444; height: 120px; margin: 0 30px;"></div>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-left: 20px;">
-            <img src="https://kingsleytran.github.io/adv-footers/award-1.png" alt="Award 1" style="height: 60px; width: auto;">
-            <img src="https://kingsleytran.github.io/adv-footers/award-2.png" alt="Award 2" style="height: 60px; width: auto;">
-        </div>
-    </div>
-</div>
 
-</body>
-</html>
+
+                    <td valign="top" style="padding-left: 20px; text-align: left;">
+                        <img src="https://kingsleytran.github.io/adv-footers/award-1.png" alt="Award 1" width="auto" height="60" style="display: block; border: 0; margin-bottom: 10px;">
+                        <img src="https://kingsleytran.github.io/adv-footers/award-2.png" alt="Award 2" width="auto" height="60" style="display: block; border: 0;">
+                    </td>
+                </tr>
+                </tbody></table>
+        </td>
+    </tr>
+    </tbody></table>
+<script>
+    (function() {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    }
+                    else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        }
+                        else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script></body></html>
